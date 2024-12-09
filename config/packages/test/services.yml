@@ -1,0 +1,4 @@
+# config/packages/test/services.yaml
+
+parameters:
+  'doctrine.dbal.connection_factory.class': App\Tests\TestConnectionFactory

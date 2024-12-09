@@ -7,21 +7,23 @@ use App\Repository\PostRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-class PostRepositoryTest extends KernelTestCase
+class PostRepositoryTest extends  RepositoryTestBase// KernelTestCase
 {
 
-    private EntityManagerInterface $entityManager;
+   // private EntityManagerInterface $entityManager;
 
     private PostRepository $postRepository;
 
     protected function setUp(): void
     {
         // (1) boot the Symfony kernel
-        $kernel = self::bootKernel();
-        $this->assertSame('test', $kernel->getEnvironment());
-        $this->entityManager = $kernel->getContainer()
-            ->get('doctrine')
-            ->getManager();
+//        $kernel = self::bootKernel();
+//        $this->assertSame('test', $kernel->getEnvironment());
+//        $this->entityManager = $kernel->getContainer()
+//            ->get('doctrine')
+//            ->getManager();
+
+        parent::setUp();
 
         //(2) use static::getContainer() to access the service container
         $container = static::getContainer();
@@ -33,7 +35,7 @@ class PostRepositoryTest extends KernelTestCase
     protected function tearDown(): void
     {
         parent::tearDown();
-        $this->entityManager->close();
+
     }
 
 
